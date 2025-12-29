@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineStream - Movie Search & Watchlist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo"><i class="fas fa-play-circle"></i> CineStream</a>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search movies...">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-links">
+                <button id="navHome" class="active">Home</button>
+                <button id="navWatchlist">Watchlist <span id="watchlistCount">0</span></button>
+                <button id="themeToggle"><i class="fas fa-moon"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <aside class="sidebar">
+            <div class="filter-section">
+                <h3>Discover</h3>
+                <button class="filter-btn active" data-filter="popular">Popular</button>
+                <button class="filter-btn" data-filter="top_rated">Top Rated</button>
+                <button class="filter-btn" data-filter="upcoming">Upcoming</button>
+            </div>
+            
+            <div class="filter-section">
+                <h3>Genres</h3>
+                <select id="genreSelect">
+                    <option value="">All Genres</option>
+                    <!-- Populated by JS -->
+                </select>
+            </div>
+
+            <div class="filter-section">
+                <h3>Sort By</h3>
+                <select id="sortSelect">
+                    <option value="popularity.desc">Most Popular</option>
+                    <option value="vote_average.desc">Highest Rated</option>
+                    <option value="primary_release_date.desc">Newest</option>
+                    <option value="primary_release_date.asc">Oldest</option>
+                </select>
+            </div>
+
+            <div class="todo-widget">
+                <h3><i class="fas fa-tasks"></i> Dev Checklist</h3>
+                <ul class="todo-list">
+                    <li><input type="checkbox" checked disabled> <span>Project Setup</span></li>
+                    <li><input type="checkbox" id="task-search"> <span>Search Functionality</span></li>
+                    <li><input type="checkbox" id="task-details"> <span>Movie Details Modal</span></li>
+                    <li><input type="checkbox" id="task-watchlist"> <span>Watchlist Logic</span></li>
+                    <li><input type="checkbox" id="task-responsive"> <span>Responsive Check</span></li>
+                </ul>
+            </div>
+        </aside>
+
+        <section class="content-area">
+            <div class="content-header">
+                <h2 id="sectionTitle">Popular Movies</h2>
+                <div class="view-toggle">
+                    <button id="gridStats" class="active"><i class="fas fa-th"></i></button>
+                    <button id="listStats"><i class="fas fa-list"></i></button>
+                </div>
+            </div>
+            
+            <div id="movieGrid" class="movie-grid">
+                <!-- Movies injected here -->
+                <div class="loader"></div>
+            </div>
+            
+            <div class="pagination">
+                <button id="prevPage" disabled>Previous</button>
+                <span id="currentPage">Page 1</span>
+                <button id="nextPage">Next</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Movie Details Modal -->
+    <div id="movieModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body" id="modalBody">
+                <!-- Details injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- API Key Warning Modal (For Demo) -->
+    <div id="apiModal" class="modal" style="display: none;">
+        <div class="modal-content small-modal">
+            <h2>Welcome to CineStream!</h2>
+            <p>To use live data, you need a TMDB API Key.</p>
+            <input type="text" id="apiKeyInput" placeholder="Enter TMDB API Key">
+            <div class="modal-actions">
+                <button id="saveKeyBtn" class="primary-btn">Save Key</button>
+                <button id="useDemoBtn" class="secondary-btn">Use Demo Data</button>
+            </div>
+            <p class="tiny-text">Get a free key at <a href="https://www.themoviedb.org/documentation/api" target="_blank">themoviedb.org</a></p>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
